@@ -20,9 +20,19 @@ PLAIN_MESSAGE="message.txt"
 ENC_MESSAGE="message.txt.enc"
 DEC_MESSAGE="message.txt.dec"
 
-# clear directories before beginning
-rm -r $ALICE_DIR/*
-rm -r $BOB_DIR/*
+# create or clear directories before beginning
+
+if [[ -d $ALICE_DIR ]]; then
+  rm -r $ALICE_DIR/*
+else 
+  mkdir $ALICE_DIR
+fi
+
+if [[ -d $BOB_DIR ]]; then
+  rm -r $BOB_DIR/*
+else
+  mkdir $BOB_DIR
+fi
 
 # alice generates a key pair
 cd $ALICE_DIR
